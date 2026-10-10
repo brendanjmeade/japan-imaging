@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Japan time-dependent fault models · methods</title>
+    <meta name="description" content="How the time-dependent celeri models shown in the viewer were built.">
+    <link rel="icon" type="image/svg+xml" href="/japan-imaging/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/japan-imaging/_astro/Attribution.D0RxT2eO.css"></head>
+  <body class="has-banner">
+    <div class="banner" role="note">
+  <b>Preliminary.</b> Exploratory model results; several windows are not converged (marked on the
+  timeline). Not for citation. <b>Known issue:</b> east components are 18–37% too large in the GSI-based
+  experiments (<a href="/japan-imaging/methods/#issues">details</a>).
+</div>
+<script type="module">var e=document.querySelector(`.banner`),t=()=>document.documentElement.style.setProperty(`--banner-h`,`${e.offsetHeight}px`);new ResizeObserver(t).observe(e),t();</script>
+    <nav class="top">
+      <a href="/japan-imaging/">Japan time-dependent fault models</a>
+      <span class="sep">&middot;</span>
+      <a href="/japan-imaging/">Viewer</a>
+      <span class="sep">&middot;</span>
+      <a href="/japan-imaging/methods/" aria-current="page">Methods</a>
+    </nav>
+    <div class="columns">
+      <aside class="sidebar">
+        
+    <h1>Methods <span class="sub">What the viewer shows and how the models were built.</span></h1>
+    <nav class="toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#fields">Fields and sign conventions</a></li>
+        <li><a href="#masks">Masked (gray) patches</a></li>
+        <li><a href="#windows">Time windows</a></li>
+        <li><a href="#data">GNSS velocities and displacements</a></li>
+        <li><a href="#issues">Known issues</a></li>
+        <li><a href="#model">Model in each window</a></li>
+        <li><a href="#uncertainty">Uncertainty and convergence</a></li>
+        <li><a href="#credits">Data and credits</a></li>
+      </ol>
+    </nav>
+    <p class="links"><a href="/japan-imaging/">← Back to the viewer</a></p>
+  
+      </aside>
+      <main class="main">
+        
+  
+
+  <h2 id="fields">Fields and sign conventions</h2>
+  <p>Each window is an independent <a href="https://github.com/brendanjmeade/celeri">celeri</a> block
+    model with triangular fault meshes, estimated by MCMC. The viewer shows posterior means (or standard
+    deviations) on each mesh triangle:</p>
+  <ul>
+    <li><b>Elastic slip deficit</b> — the slip-deficit rate that produces the elastic part of the surface
+      velocity field (mm/yr). In coseismic windows it is the slip deficit accumulated over the window, in mm.
+      Positive dip-slip is a reverse-sense deficit (locking); <b>coseismic slip and afterslip on thrust
+      faults are therefore negative</b>. The “show as slip” option flips the sign.</li>
+    <li><b>Kinematic slip</b> — the slip rate implied by the relative motion of the bounding blocks,
+      smoothed onto the mesh (mm/yr). Positive strike-slip is left-lateral, positive dip-slip is reverse.</li>
+    <li><b>Coupling</b> — elastic slip deficit divided by kinematic slip, where the mesh is parameterized
+      by coupling (0 = freely slipping, 1 = fully locked). It is drawn in viridis on [0, 1]; in the default
+      experiments the dipping crustal meshes allow dip-slip coupling down to −10, and values below 0 are
+      drawn dark. Experiments that allow negative coupling everywhere it matters (the starter models'
+      postseismic host meshes: [−2, 1], or [−10, 1] on the Japan Trench in “Japan Trench afterslip to −10” and all
+      later experiments, with [−50, 1] in the scaled-BEL experiment's first year after Tohoku,
+      where values below −10 are drawn at the blue end; at −2 the fault slips at three times the block-motion rate) use a red–blue map
+      instead, with 0 white at the centre, the lower bound at the blue end and 1 at the red end.</li>
+    <li><b>Apparent coupling</b> — coupling where the mesh estimates it; elsewhere in rate windows
+      (meshes in elastic, free-slip mode after a large earthquake) the elastic slip deficit divided by the
+      kinematic rate. The derived values are a way to read free slip on the same footing as coupling:
+      afterslip faster than the plate rate appears as strongly negative apparent coupling. They are masked
+      where the kinematic rate is below 1 mm/yr. Their SD is the elastic SD divided by the kinematic rate.
+      The readout says, for each patch, whether the value is estimated or derived.</li>
+  </ul>
+  <p>Rate windows use a red–blue map (red positive); coseismic windows use a purple–orange map and their
+    own scale, because they are displacements in mm rather than rates. The viewer opens on a fixed linear scale;
+    the logarithmic option, symmetric about zero, makes interseismic rates of a few mm/yr and early afterslip of tens
+    of m/yr readable together.</p>
+
+  <h2 id="masks">Masked (gray) patches</h2>
+  <div class="wide"><table>
+    <tr><th>Field</th><th>Gray when</th><th>Why</th></tr>
+    <tr><td>Coupling</td><td>the mesh (or one slip component of it) is in elastic (free-slip) mode in that window</td>
+      <td>Post-event host meshes estimate slip directly, not as coupling, so coupling is undefined.</td></tr>
+    <tr><td>Coupling</td><td>coseismic windows</td><td>Block rotations are held at zero, so the kinematic rate is zero.</td></tr>
+    <tr><td>Kinematic slip</td><td>coseismic windows</td><td>Same reason.</td></tr>
+    <tr><td>Apparent coupling</td><td>coseismic windows; where the kinematic rate is below 1 mm/yr</td>
+      <td>No block motion in coseismic windows; the ratio is meaningless for near-zero rates.</td></tr>
+    <tr><td>Kinematic, coupling</td><td>dip-slip on the vertical meshes</td><td>Dip-slip is not defined on vertical faults.</td></tr>
+    <tr><td>Kinematic, coupling</td><td>the BEL sheet (at 50 km; 30 km in the new-Noto-mesh experiment and those built on it)</td><td>It is not attached to block boundaries.</td></tr>
+    <tr><td>Posterior SD</td><td>wherever the matching mean is masked, and for kinematic slip on meshes in elastic mode</td>
+      <td>No posterior draws exist there.</td></tr>
+  </table></div>
+
+  <h2 id="windows">Time windows</h2>
+  <p>The GEONET record (2005-07-21 to 2025-05-09) is cut at Global CMT earthquakes of Mw ≥ 6.5 that are
+    close enough to offset at least one station (distance ≤ 10<sup>0.36 Mw − 0.15</sup> km, surface distance
+    plus depth). Each such event, or cluster of events within two days, becomes a coseismic window. Coseismic
+    slip is modeled only for earthquakes that are on a modeled fault: the hypocenter within 30 km of a mesh
+    and one Global CMT nodal plane within 20° of the local subduction-interface plane (40° for the
+    schematic crustal faults). Intraslab, outer-rise and upper-plate events, and clusters with fewer than 10
+    stations inside the offset radius, still split the record but get no model run (hatched on the timeline).</p>
+  <p>After on-fault events of Mw ≥ 7, windows end 7, 30, 91 and 182 days and 1 year (and 2 years for
+    Mw ≥ 8) after the event, and are labeled postseismic: the host fault is in free-slip mode for 1 year
+    after Mw 7–8 events and 2 years after Mw ≥ 8 events. (The first experiment, “default”, used distance-only
+    hosts and 2-year postseismic periods for every Mw ≥ 7 event.) Remaining long windows are split where many stations share a change in slope
+    (adaptive splitting). In <b>equal-time</b> playback every window gets the same screen time; in
+    <b>calendar</b> playback screen time is proportional to the window's duration, with a minimum so 1-day
+    coseismic windows stay visible.</p>
+
+  <h2 id="data">GNSS velocities and displacements</h2>
+  <p>Most experiments use GSI's F5 daily solutions; experiments labelled UNR use the Nevada Geodetic
+    Laboratory's IGS20 solutions for the same stations.
+    About 600 GEONET stations with continuous daily positions are fit jointly, one least-squares problem
+    per station, with a linear rate in each window (positions continuous across ordinary window
+    boundaries), a step at each coseismic cluster, steps at equipment changes and smaller earthquakes, and
+    annual plus semiannual terms. The daily network-wide common-mode error is estimated and removed first.
+    The window rates are rotated into the frame of a regional velocity field with one fixed rotation and
+    translation; regional stations outside Japan provide far-field constraints in rate windows. In coseismic
+    windows the data are the fitted coseismic steps (mm); stations outside the offset radius contribute
+    their residual jump, which is close to zero.</p>
+
+  <h2 id="issues">Known issues</h2>
+  <p><b>East components are 18–37% too large in the GSI-based experiments</b> (every experiment not
+    labelled UNR). GSI's F5 files give positions as latitude and longitude, and our conversion to east
+    displacements left out the cos(latitude) factor, so east is too large by 1/cos(latitude): ×1.18 at
+    32° N, ×1.23 at 36° N and ×1.37 at 43° N. North and up are not affected. The rotation into the regional
+    frame absorbs much of the error in the absolute velocities, but east–west changes from window to window
+    (postseismic motion, transients, coseismic steps) are exaggerated by that factor, and the models fit
+    them as they are.</p>
+  <p>The experiments labelled UNR use the Nevada Geodetic Laboratory's solutions and are not affected. Their
+    network-wide common-mode motion is also two to four times smaller than GSI's, so their short windows
+    are less noisy.</p>
+
+  <h2 id="model">Model in each window</h2>
+  <ul>
+    <li><b>Interseismic</b>: fault meshes parameterized by coupling in [0, 1]; the BEL sheet is effectively off.</li>
+    <li><b>Postseismic</b>: in the default and on-fault experiments, the meshes that hosted the triggering
+      earthquake switch to elastic (free-slip) mode, with a prior scaled to the observed velocities, so
+      afterslip is not tied to block motion; in the starter experiments they stay in coupling mode with a
+      negative lower bound (see Coupling above). The BEL sheet is on.</li>
+    <li><b>Coseismic</b>: block rotations held at zero and only the host meshes slip.</li>
+    <li><b>New Noto mesh</b> (“new Noto mesh with free reverse afterslip”): after the 2024 Noto earthquake the
+      Noto–Niigata mesh's dip-slip is in elastic mode but restricted to reverse slip (its slip deficit is
+      bounded above by 0), and its strike-slip stays in coupling mode within [−10, 1]. Without the reverse-only
+      bound, free slip put a third or more of the moment at the mesh's far northeastern end, fitting
+      non-tectonic signal on the Niigata coast.</li>
+    <li><b>Scaled BEL</b> (“BEL scaled to the data after Tohoku”): the new-Noto-mesh experiment with two changes
+      after Tohoku. From March 2011 to the end of 2023 the BEL sheet's prior σ is half of each window's
+      95th-percentile velocity signal (2.4 m/yr in the first week, 221 mm/yr in mid-2011, 25 mm/yr in 2022)
+      instead of 5 mm/yr, so slip on the sheet can stand in for the displacements that mantle flow applies to the
+      base of the elastic layer (Loveless &amp; Meade, 2025). In the first year the Japan Trench coupling can reach
+      −50, with a steeper sigmoid so that the prior between 0 and −9 is unchanged. This fits the inland postseismic
+      motion that the other experiments miss, but onshore data cannot tell BEL slip beneath the forearc from deep
+      afterslip: here the BEL slips fastest beneath the forearc, and the trench afterslip is several times smaller
+      than in the other experiments.</li>
+    <li><b>BEL cut</b> (“BEL cut under the forearc”): the scaled-BEL experiment with two changes after Tohoku. The BEL
+      sheet is trimmed where it lay above the Japan Trench mesh in map view, so it now ends along the line where the slab
+      reaches 50 km depth (the trench mesh's bottom edge), about 200 km from the trench. Published models of Tohoku put a
+      cold, elastic corner of the mantle wedge (the “cold nose”) beneath the forearc, where no mantle flow is expected. In
+      the first year the Japan Trench's dip-slip is in elastic mode, restricted to reverse slip, with a prior σ equal to
+      each window's 95th-percentile velocity signal, instead of the coupling floor of −50. The fit is as good as the
+      scaled-BEL model's, the trench afterslip reaches Mw 8.4 within two years, close to published estimates, and the BEL
+      slips fastest beneath the volcanic arc. Caveat: about 1 m of first-year afterslip lies inside the main rupture near
+      the trench, where seafloor geodesy and repeating earthquakes indicate little afterslip; onshore stations cannot
+      resolve slip there.</li>
+    <li><b>Zero trench edge</b> (“zero slip deficit at the Nankai and Japan Trench edges”): the BEL-cut experiment with the
+      slip deficit held at zero on the shallowest row of triangles (about 15 km wide) of the Nankai and Japan Trench meshes,
+      in every window. The trench edge therefore creeps at the block-motion rate and has no afterslip, which could hold if
+      the large shallow slip in 2011 was dynamic overshoot (Ide, Baltay and Beroza, 2011, Science 332). In the first year after Tohoku the tolerance
+      is 1% of each window's 95th-percentile velocity signal instead of 0.5 mm/yr, which the sampler could not handle there.
+      It moves about 0.4 m of first-year afterslip out of the main rupture with no change in fit, and calms window-to-window
+      changes at the trench edge. It does not steady the slip farther downdip: before Tohoku, coupling at 25–50 km rises to
+      make up for the pinned edge. The fit is worse at the Suruga Trough, where stations are 20–35 km from the trench
+      edge and the data favour locking right at the trench.</li>
+  </ul>
+  <p>Within an experiment the mesh geometry is the same in every window. The new-Noto-mesh experiment and
+    those built on it use an updated mesh set: the Noto–Niigata mesh reaches 25 km instead of 15 km, and the BEL sheet
+    is at 30 km instead of 50 km (trimmed under the Japan Trench forearc in the BEL-cut and zero-trench-edge
+    experiments).</p>
+
+  <h2 id="uncertainty">Uncertainty and convergence</h2>
+  <p>The posterior SD of each component is computed from all MCMC draws (two chains × 300 draws). For the
+    magnitude, the SD is that of the per-draw magnitude. These are <b>exploratory</b> runs: split R-hat is
+    above 1.1 for some parameters in about half the windows, mostly the eigenmode coefficients of meshes in
+    elastic mode in coseismic and postseismic windows. Windows with poor convergence are marked on the
+    timeline and in the readout. Longer runs are planned.</p>
+
+  <h2 id="credits">Data and credits</h2>
+  <ul>
+    <li>GNSS daily positions: GEONET, Geospatial Information Authority of Japan (GSI); F5 solutions from GSI,
+      and IGS20 solutions from the Nevada Geodetic Laboratory (Blewitt, Hammond and Kreemer, 2018, Eos 99) for
+      the experiments labelled UNR.</li>
+    <li>Coastline: Source: Global Map Japan, Geospatial Information Authority of Japan (地球地図日本・国土地理院).</li>
+    <li>Earthquakes: Global CMT catalog (Dziewonski et al., 1981, JGR; Ekström et al., 2012, PEPI).</li>
+    <li>Block and fault models: <a href="https://github.com/brendanjmeade/celeri">celeri</a>.</li>
+    <li>Base-of-elastic-layer representation of mantle flow: Loveless and Meade (2025), Earth and Space Science 12,
+      e2025EA004460.</li>
+  </ul>
+  <p class="attribution">
+  GNSS: GEONET, Geospatial Information Authority of Japan (GSI). Coastline: Global Map Japan, GSI
+  (地球地図日本・国土地理院). Earthquakes: Global CMT. Models: <a href="https://github.com/brendanjmeade/celeri">celeri</a>.
+</p>
+
+      </main>
+    </div>
+  </body>
+</html>

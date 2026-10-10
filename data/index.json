@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "experiments": [
+    {
+      "id": "default",
+      "label": "Default (M6.5 chunking, exploratory MCMC)",
+      "description": "M6.5 chunking, log-spaced windows after on-mesh M7+, adaptive splitting",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 94,
+      "n_windows": 111,
+      "exported_at": "2026-10-07T21:57:33Z",
+      "manifest": "default/manifest.json",
+      "bytes_total": 35712601
+    },
+    {
+      "id": "onfault",
+      "label": "On-fault hosts, magnitude-scaled postseismic (exploratory MCMC)",
+      "description": "M6.5 chunking; coseismic slip only for on-fault events (CMT nodal plane within 20\u00b0 of the interface, 40\u00b0 crustal); free slip 2 yr after Mw \u2265 8, 1 yr after Mw 7\u20138",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 74,
+      "n_windows": 95,
+      "exported_at": "2026-10-08T00:11:40Z",
+      "manifest": "onfault/manifest.json",
+      "bytes_total": 28215848
+    },
+    {
+      "id": "starter",
+      "label": "Starter: rates only, fixed blocks (exploratory MCMC)",
+      "description": "rates only (no coseismic runs, only Mw >= 7 on-fault triggers split windows); coupling [0, 1], postseismic host meshes [-2, 1]; block motion fixed to a pre-Tohoku reference solve; postseismic 5 yr after Mw >= 8, 1 yr after Mw 7-8",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 39,
+      "n_windows": 44,
+      "exported_at": "2026-10-08T13:40:27Z",
+      "manifest": "starter/manifest.json",
+      "bytes_total": 15116502
+    },
+    {
+      "id": "starter_long",
+      "label": "Starter, Tohoku postseismic to 2025 (exploratory MCMC)",
+      "description": "rates only (no coseismic runs, only Mw >= 7 on-fault triggers split windows); coupling [0, 1], postseismic host meshes [-2, 1]; block motion fixed to a pre-Tohoku reference solve; postseismic through the end of the record after Mw >= 8 (Tohoku), 1 yr after Mw 7-8",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 39,
+      "n_windows": 44,
+      "exported_at": "2026-10-08T13:54:24Z",
+      "manifest": "starter_long/manifest.json",
+      "bytes_total": 15116700
+    },
+    {
+      "id": "starter_longwin",
+      "label": "Starter, longer windows (exploratory MCMC)",
+      "description": "rates only (no coseismic runs, only Mw >= 7 on-fault triggers split windows); coupling [0, 1], postseismic host meshes [-2, 1]; block motion fixed to a pre-Tohoku reference solve; postseismic through the end of the record after Mw >= 8 (Tohoku), 1 yr after Mw 7-8; interseismic windows >= 60 d, 91/365-d schedules after Mw 7-8; Iwo-to excluded",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T03:59:38Z",
+      "manifest": "starter_longwin/manifest.json",
+      "bytes_total": 9868061
+    },
+    {
+      "id": "starter_refprior",
+      "label": "Starter, reference-centred coupling prior (exploratory MCMC)",
+      "description": "starter_longwin with the coupling prior centred on the reference solve (per triangle; sigma 0.5): all meshes in interseismic windows, non-host meshes in postseismic windows",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T03:59:45Z",
+      "manifest": "starter_refprior/manifest.json",
+      "bytes_total": 9867892
+    },
+    {
+      "id": "starter_longwin_unr",
+      "label": "Starter, longer windows, UNR positions (exploratory MCMC)",
+      "description": "starter_longwin (rates only, block motion fixed to a pre-Tohoku reference solve, Tohoku postseismic to the end of the record, 91/365-d schedules after Mw 7-8, interseismic windows >= 60 d) with UNR IGS20 daily positions for the same 596 GEONET sites and the same windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T12:15:53Z",
+      "manifest": "starter_longwin_unr/manifest.json",
+      "bytes_total": 9867271
+    },
+    {
+      "id": "starter_refprior_unr",
+      "label": "Starter, reference-centred coupling prior, UNR positions (exploratory MCMC)",
+      "description": "starter_refprior (coupling prior centred on the reference solve, per triangle, sigma 0.5) with UNR IGS20 daily positions for the same 596 GEONET sites and the same windows as starter_longwin_unr",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T12:31:38Z",
+      "manifest": "starter_refprior_unr/manifest.json",
+      "bytes_total": 9867189
+    },
+    {
+      "id": "starter_jt10_unr",
+      "label": "Starter, Japan Trench afterslip to \u221210, UNR positions (exploratory MCMC)",
+      "description": "starter_longwin_unr with Japan Trench coupling bounds [-10, 1] in postseismic windows (other hosts [-2, 1]): UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T13:29:19Z",
+      "manifest": "starter_jt10_unr/manifest.json",
+      "bytes_total": 9867153
+    },
+    {
+      "id": "starter_jt10_notofree_rev_unr",
+      "label": "Starter, new Noto mesh with free reverse afterslip, 30 km BEL, UNR positions (exploratory MCMC)",
+      "description": "starter_jt10_unr with an updated mesh set (the Noto-Niigata mesh reaches 25 km instead of 15 km; the BEL sheet is at 30 km instead of 50 km). After the 2024 Noto earthquake the Noto-Niigata mesh slips freely in reverse dip-slip only (prior sigma 200 mm/yr Jan-Mar 2024, 100 mm/yr after), with its strike-slip held to coupling [-10, 1]: UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T21:21:47Z",
+      "manifest": "starter_jt10_notofree_rev_unr/manifest.json",
+      "bytes_total": 9239939
+    },
+    {
+      "id": "starter_jt50_belscale_unr",
+      "label": "Starter, BEL scaled to the data after Tohoku, trench to \u221250 in year 1, UNR positions (exploratory MCMC)",
+      "description": "starter_jt10_notofree_rev_unr with the BEL prior scaled to the data in every window from March 2011 to 2023 (sigma = half the window's 95th-percentile velocity signal: 2422 mm/yr in the first week, 221 in mid-2011, 25 in 2022; 5 mm/yr before) and Japan Trench coupling down to -50 in the first year after Tohoku. It fits the inland postseismic motion, but the BEL slips fastest beneath the forearc and the trench afterslip is several times smaller than in the other experiments: new Noto mesh, 30 km BEL, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-10T00:41:24Z",
+      "manifest": "starter_jt50_belscale_unr/manifest.json",
+      "bytes_total": 9240159
+    },
+    {
+      "id": "starter_belcut50_unr",
+      "label": "Starter, BEL cut under the forearc (50 km line), free reverse trench afterslip in year 1, UNR positions (exploratory MCMC)",
+      "description": "starter_jt50_belscale_unr with the 30 km BEL cut back where it lay above the Japan Trench mesh (the cut follows the trench mesh's 50 km bottom edge, about 200 km from the trench) and free reverse Japan Trench dip-slip in the first year after Tohoku (prior sigma = the window's 95th-percentile velocity signal) instead of the coupling floor of -50. It fits as well as the scaled-BEL model; the trench afterslip reaches Mw 8.4 by 2 yr and the BEL slips fastest beneath the arc, but about 1 m of first-year afterslip lies inside the main rupture, where onshore data cannot resolve slip: new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-10T03:42:03Z",
+      "manifest": "starter_belcut50_unr/manifest.json",
+      "bytes_total": 9185354
+    },
+    {
+      "id": "starter_belcut50_top0_unr",
+      "label": "Starter, 50 km BEL cut, zero slip deficit at the Nankai and Japan Trench edges, UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_unr with the slip deficit held at zero on the shallowest row of triangles of the Nankai and Japan Trench meshes in every window, so the trench edge creeps at the block-motion rate and has no afterslip (in the first year after Tohoku the tolerance is 1% of each window's 95th-percentile signal). It moves about 0.4 m of first-year afterslip out of the main rupture with no change in fit, but worsens the fit at the Suruga Trough, where stations are 20-35 km from the trench edge, and before Tohoku raises coupling farther downdip: new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-10T04:57:23Z",
+      "manifest": "starter_belcut50_top0_unr/manifest.json",
+      "bytes_total": 9185396
+    }
+  ],
+  "default": "starter_longwin_unr"
+}
