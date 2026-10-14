@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Japan time-dependent fault models · viewer</title>
+    <meta name="description" content="Interactive 3-D view of time-dependent celeri block and fault models of Japan, 2005–2025.">
+    <link rel="icon" type="image/svg+xml" href="/japan-imaging/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/japan-imaging/_astro/Attribution.D0RxT2eO.css"></head>
+  <body class="has-banner wide">
+    <div class="banner" role="note">
+  <b>Preliminary.</b> Exploratory model results; several windows are not converged (marked on the
+  timeline). Not for citation. <b>Known issue:</b> east components are 18–37% too large in the GSI-based
+  experiments (<a href="/japan-imaging/methods/#issues">details</a>).
+</div>
+<script type="module">var e=document.querySelector(`.banner`),t=()=>document.documentElement.style.setProperty(`--banner-h`,`${e.offsetHeight}px`);new ResizeObserver(t).observe(e),t();</script>
+    <nav class="top">
+      <a href="/japan-imaging/" aria-current="page">Japan time-dependent fault models</a>
+      <span class="sep">&middot;</span>
+      <a href="/japan-imaging/" aria-current="page">Viewer</a>
+      <span class="sep">&middot;</span>
+      <a href="/japan-imaging/methods/">Methods</a>
+    </nav>
+    <div class="columns">
+      <aside class="sidebar">
+        
+    <h1>Time-dependent fault models of Japan
+      <span class="sub">Elastic slip deficit, kinematic slip and coupling on the fault meshes, window by window, 2005–2025.</span>
+    </h1>
+    <p class="meta" id="exp-meta"></p>
+    <p class="warn" id="exp-warn" hidden><b>GSI positions, east too large.</b> This experiment uses GSI F5
+      positions whose east components are 18–37% too large (a missing cos(latitude) in our processing), so its
+      east–west signals are exaggerated. The UNR experiments are not affected.
+      <a href="/japan-imaging/methods/#issues">Details</a></p>
+
+    <div class="ctl" id="exp-row" hidden>
+      <h3>Experiment</h3>
+      <select id="exp"></select>
+    </div>
+
+    <div class="ctl">
+      <h3>Field</h3>
+      <div class="row">
+        <select id="field">
+          <option value="elastic">Elastic slip deficit</option>
+          <option value="kinematic">Kinematic slip</option>
+          <option value="coupling" selected>Coupling</option>
+          <option value="apparent">Apparent coupling</option>
+        </select>
+      </div>
+      <div class="row">
+        <span class="seg" id="comps">
+          <button data-comp="ss">Strike-slip</button><button data-comp="ds">Dip-slip</button><button data-comp="mag">|Slip|</button>
+        </span>
+      </div>
+      <div class="row">
+        <span class="seg" id="stats">
+          <button data-stat="mean">Mean</button><button data-stat="sd">Posterior SD</button>
+        </span>
+      </div>
+      <label id="as-slip-row"><input type="checkbox" id="as-slip"> Show as slip (−deficit)</label>
+    </div>
+
+    <div class="ctl">
+      <h3>Color scale</h3>
+      <div class="row">
+        <select id="scale-mode">
+          <option value="class">Per window class (coseismic: per event)</option>
+          <option value="global" selected>Fixed (all rates / all coseismic)</option>
+          <option value="auto">Auto per frame</option>
+        </select>
+      </div>
+      <div class="row" id="norm-row">
+        <select id="scale-norm">
+          <option value="symlog">Logarithmic</option>
+          <option value="linear" selected>Linear</option>
+        </select>
+        <span title="Decades shown below the maximum (logarithmic scale)">range
+          <input type="range" id="scale-decades" min="1" max="6" step="0.5" value="3" style="width:90px">
+          <span id="decades-val">3</span> dec</span>
+      </div>
+      <div class="row">max <input type="number" id="scale-vmax" min="0" step="any" placeholder="auto"></div>
+    </div>
+
+    <div class="ctl">
+      <h3>Playback</h3>
+      <div class="row">
+        <select id="play-mode">
+          <option value="equal">Equal time per window</option>
+          <option value="calendar" selected>Calendar time</option>
+        </select>
+      </div>
+      <div class="row">speed <input type="range" id="speed" min="0" max="5" step="1" value="2"> <span id="speed-val">1×</span></div>
+      <label><input type="checkbox" id="hold"> Hold longer on coseismic windows</label>
+    </div>
+
+    <div class="ctl">
+      <h3>Layers</h3>
+      <label><input type="checkbox" id="l-coast" checked> Coastline</label>
+      <div class="row">Block boundaries
+        <select id="l-segments">
+          <option value="off">off</option>
+          <option value="plain" selected>lines</option>
+          <option value="ss">colored by strike-slip rate</option>
+          <option value="ds">colored by dip-slip rate</option>
+        </select>
+      </div>
+      <div class="row">
+        GNSS
+        <label class="inline"><input type="checkbox" id="l-obs"> observed</label>
+        <label class="inline"><input type="checkbox" id="l-model"> model</label>
+        <label class="inline"><input type="checkbox" id="l-resid"> residual</label>
+      </div>
+      <div class="row">
+        <label class="inline"><input type="checkbox" id="arrow-auto" checked> auto-scale arrows</label>
+        <input type="range" id="arrow-mult" min="-2" max="2" step="0.25" value="0" style="width:90px">
+        <span id="arrow-mult-val">1.00×</span>
+      </div>
+      <label><input type="checkbox" id="l-events" checked> Earthquakes</label>
+      <div class="row">
+        <label class="inline"><input type="checkbox" id="ev-depth" checked> at depth</label>
+        trail <select id="ev-trail">
+          <option value="0">none</option><option value="90">90 d</option>
+          <option value="365" selected>1 yr</option><option value="1826">5 yr</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="ctl">
+      <h3>Fault meshes</h3>
+      <div id="meshes"></div>
+      <div class="row">BEL opacity <input type="range" id="bel-opacity" min="0.1" max="1" step="0.05" value="0.35" style="width:100px"></div>
+    </div>
+
+    <div class="ctl">
+      <h3>View</h3>
+      <div class="row">vertical exaggeration <input type="range" id="ve" min="0" max="100" step="1" value="19" style="width:110px"> <span id="ve-val"></span></div>
+      <div class="row">
+        <button class="ghost" data-view="oblique">Oblique</button>
+        <button class="ghost" data-view="map">Map</button>
+        <button class="ghost" data-view="trench">From trench</button>
+      </div>
+      <p class="dim" style="font-size:12.5px">Drag to rotate, scroll to zoom, right-drag to pan. Keys: space play,
+        ←/→ step, shift+←/→ next coseismic window, 1–4 field, m mean/SD, v oblique, t map.</p>
+    </div>
+  
+      </aside>
+      <main class="main">
+        
+  
+
+  <div id="viewer">
+    <div id="badge"></div>
+    <div class="overlay" id="overlay"></div>
+    <div id="key-label" hidden></div>
+    <div id="loading"></div>
+  </div>
+  <div id="colorbar"></div>
+  <div class="transport">
+    <button id="play" aria-pressed="false">▶ Play</button>
+    <button class="ghost" id="prev" title="previous window (←)">◀</button>
+    <button class="ghost" id="next" title="next window (→)">▶</button>
+    <input type="range" id="frame" min="0" max="1" value="0" aria-label="window">
+    <span id="frame-label"></span>
+  </div>
+  <div id="timeline"></div>
+  <div class="legend">
+    <i style="background:#9fb7c9"></i>interseismic <i style="background:#e7a95b"></i>postseismic
+    <i style="background:#b5367a"></i>coseismic <i style="background:repeating-linear-gradient(45deg,#999 0 2px,#fff 2px 4px)"></i>skipped cluster (no run)
+    · ◆ window-bounding earthquakes · dots: max split R-hat
+    <span style="color:#f0a04b">●</span> &gt; 1.1 <span style="color:#c0392b">●</span> &gt; 1.5
+  </div>
+  <div id="readout"></div>
+  <p class="attribution">
+  GNSS: GEONET, Geospatial Information Authority of Japan (GSI). Coastline: Global Map Japan, GSI
+  (地球地図日本・国土地理院). Earthquakes: Global CMT. Models: <a href="https://github.com/brendanjmeade/celeri">celeri</a>.
+</p>
+
+  <script type="module" src="/japan-imaging/_astro/index.astro_astro_type_script_index_0_lang.ki0d_8S4.js"></script>
+      </main>
+    </div>
+  </body>
+</html>
