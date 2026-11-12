@@ -1,0 +1,840 @@
+{
+  "schema": 1,
+  "experiments": [
+    {
+      "id": "default",
+      "label": "0001 \u00b7 Default (M6.5 chunking, exploratory MCMC)",
+      "description": "M6.5 chunking, log-spaced windows after on-mesh M7+, adaptive splitting",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 94,
+      "n_windows": 111,
+      "exported_at": "2026-10-07T21:57:33Z",
+      "manifest": "default/manifest.json",
+      "bytes_total": 35712613
+    },
+    {
+      "id": "onfault",
+      "label": "0002 \u00b7 On-fault hosts, magnitude-scaled postseismic (exploratory MCMC)",
+      "description": "M6.5 chunking; coseismic slip only for on-fault events (CMT nodal plane within 20\u00b0 of the interface, 40\u00b0 crustal); free slip 2 yr after Mw \u2265 8, 1 yr after Mw 7\u20138",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 74,
+      "n_windows": 95,
+      "exported_at": "2026-10-08T00:11:40Z",
+      "manifest": "onfault/manifest.json",
+      "bytes_total": 28215860
+    },
+    {
+      "id": "starter",
+      "label": "0003 \u00b7 Starter: rates only, fixed blocks (exploratory MCMC)",
+      "description": "rates only (no coseismic runs, only Mw >= 7 on-fault triggers split windows); coupling [0, 1], postseismic host meshes [-2, 1]; block motion fixed to a pre-Tohoku reference solve; postseismic 5 yr after Mw >= 8, 1 yr after Mw 7-8",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 39,
+      "n_windows": 44,
+      "exported_at": "2026-10-08T13:40:27Z",
+      "manifest": "starter/manifest.json",
+      "bytes_total": 15116514
+    },
+    {
+      "id": "starter_long",
+      "label": "0004 \u00b7 Starter, Tohoku postseismic to 2025 (exploratory MCMC)",
+      "description": "rates only (no coseismic runs, only Mw >= 7 on-fault triggers split windows); coupling [0, 1], postseismic host meshes [-2, 1]; block motion fixed to a pre-Tohoku reference solve; postseismic through the end of the record after Mw >= 8 (Tohoku), 1 yr after Mw 7-8",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 39,
+      "n_windows": 44,
+      "exported_at": "2026-10-08T13:54:24Z",
+      "manifest": "starter_long/manifest.json",
+      "bytes_total": 15116712
+    },
+    {
+      "id": "starter_longwin",
+      "label": "0005 \u00b7 Starter, longer windows (exploratory MCMC)",
+      "description": "rates only (no coseismic runs, only Mw >= 7 on-fault triggers split windows); coupling [0, 1], postseismic host meshes [-2, 1]; block motion fixed to a pre-Tohoku reference solve; postseismic through the end of the record after Mw >= 8 (Tohoku), 1 yr after Mw 7-8; interseismic windows >= 60 d, 91/365-d schedules after Mw 7-8; Iwo-to excluded",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T03:59:38Z",
+      "manifest": "starter_longwin/manifest.json",
+      "bytes_total": 9868073
+    },
+    {
+      "id": "starter_refprior",
+      "label": "0006 \u00b7 Starter, reference-centred coupling prior (exploratory MCMC)",
+      "description": "starter_longwin with the coupling prior centred on the reference solve (per triangle; sigma 0.5): all meshes in interseismic windows, non-host meshes in postseismic windows",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T03:59:45Z",
+      "manifest": "starter_refprior/manifest.json",
+      "bytes_total": 9867904
+    },
+    {
+      "id": "starter_longwin_unr",
+      "label": "0007 \u00b7 Starter, longer windows, UNR positions (exploratory MCMC)",
+      "description": "starter_longwin (rates only, block motion fixed to a pre-Tohoku reference solve, Tohoku postseismic to the end of the record, 91/365-d schedules after Mw 7-8, interseismic windows >= 60 d) with UNR IGS20 daily positions for the same 596 GEONET sites and the same windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T12:15:53Z",
+      "manifest": "starter_longwin_unr/manifest.json",
+      "bytes_total": 9867283
+    },
+    {
+      "id": "starter_refprior_unr",
+      "label": "0008 \u00b7 Starter, reference-centred coupling prior, UNR positions (exploratory MCMC)",
+      "description": "starter_refprior (coupling prior centred on the reference solve, per triangle, sigma 0.5) with UNR IGS20 daily positions for the same 596 GEONET sites and the same windows as starter_longwin_unr",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T12:31:38Z",
+      "manifest": "starter_refprior_unr/manifest.json",
+      "bytes_total": 9867201
+    },
+    {
+      "id": "starter_jt10_unr",
+      "label": "0009 \u00b7 Starter, Japan Trench afterslip to \u221210, UNR positions (exploratory MCMC)",
+      "description": "starter_longwin_unr with Japan Trench coupling bounds [-10, 1] in postseismic windows (other hosts [-2, 1]): UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T13:29:19Z",
+      "manifest": "starter_jt10_unr/manifest.json",
+      "bytes_total": 9867165
+    },
+    {
+      "id": "starter_jt10_notofree_rev_unr",
+      "label": "0010 \u00b7 Starter, new Noto mesh with free reverse afterslip, 30 km BEL, UNR positions (exploratory MCMC)",
+      "description": "starter_jt10_unr with an updated mesh set (the Noto-Niigata mesh reaches 25 km instead of 15 km; the BEL sheet is at 30 km instead of 50 km). After the 2024 Noto earthquake the Noto-Niigata mesh slips freely in reverse dip-slip only (prior sigma 200 mm/yr Jan-Mar 2024, 100 mm/yr after), with its strike-slip held to coupling [-10, 1]: UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-09T21:21:47Z",
+      "manifest": "starter_jt10_notofree_rev_unr/manifest.json",
+      "bytes_total": 9239951
+    },
+    {
+      "id": "starter_jt50_belscale_unr",
+      "label": "0011 \u00b7 Starter, BEL scaled to the data after Tohoku, trench to \u221250 in year 1, UNR positions (exploratory MCMC)",
+      "description": "starter_jt10_notofree_rev_unr with the BEL prior scaled to the data in every window from March 2011 to 2023 (sigma = half the window's 95th-percentile velocity signal: 2422 mm/yr in the first week, 221 in mid-2011, 25 in 2022; 5 mm/yr before) and Japan Trench coupling down to -50 in the first year after Tohoku. It fits the inland postseismic motion, but the BEL slips fastest beneath the forearc and the trench afterslip is several times smaller than in the other experiments: new Noto mesh, 30 km BEL, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-10T00:41:24Z",
+      "manifest": "starter_jt50_belscale_unr/manifest.json",
+      "bytes_total": 9240171
+    },
+    {
+      "id": "starter_belcut50_unr",
+      "label": "0012 \u00b7 Starter, BEL cut under the forearc (50 km line), free reverse trench afterslip in year 1, UNR positions (exploratory MCMC)",
+      "description": "starter_jt50_belscale_unr with the 30 km BEL cut back where it lay above the Japan Trench mesh (the cut follows the trench mesh's 50 km bottom edge, about 200 km from the trench) and free reverse Japan Trench dip-slip in the first year after Tohoku (prior sigma = the window's 95th-percentile velocity signal) instead of the coupling floor of -50. It fits as well as the scaled-BEL model; the trench afterslip reaches Mw 8.4 by 2 yr and the BEL slips fastest beneath the arc, but about 1 m of first-year afterslip lies inside the main rupture, where onshore data cannot resolve slip: new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-10T03:42:03Z",
+      "manifest": "starter_belcut50_unr/manifest.json",
+      "bytes_total": 9185366
+    },
+    {
+      "id": "starter_belcut50_top0_unr",
+      "label": "0013 \u00b7 Starter, 50 km BEL cut, zero slip deficit at the Nankai and Japan Trench edges, UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_unr with the slip deficit held at zero on the shallowest row of triangles of the Nankai and Japan Trench meshes in every window, so the trench edge creeps at the block-motion rate and has no afterslip (in the first year after Tohoku the tolerance is 1% of each window's 95th-percentile signal). It moves about 0.4 m of first-year afterslip out of the main rupture with no change in fit, but worsens the fit at the Suruga Trough, where stations are 20-35 km from the trench edge, and before Tohoku raises coupling farther downdip: new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-10T04:57:23Z",
+      "manifest": "starter_belcut50_top0_unr/manifest.json",
+      "bytes_total": 9185408
+    },
+    {
+      "id": "starter_belcut50_remesh_unr",
+      "label": "0014 \u00b7 Starter, 50 km BEL cut, remeshed BEL sheet, UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_unr on a remeshed 30 km BEL sheet with the same outline (2456 triangles with 30-69 km edges instead of 916 with 11-426 km edges; 2399 kept after the same cut under the forearc), still with 273 eigenmodes, which on this sheet keep 91% of the prior variance instead of 99%. Trench afterslip (Mw 8.39 at 2 yr), Nankai coupling and BEL slip near the stations are unchanged; the fit after Tohoku is about 5% worse, as fewer modes are spent where the data are. w005 keeps one chain (the other stalled and was dropped): new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-13T21:54:09Z",
+      "manifest": "starter_belcut50_remesh_unr/manifest.json",
+      "bytes_total": 9646776
+    },
+    {
+      "id": "starter_belcut50_remesh_m99_unr",
+      "label": "0015 \u00b7 Starter, 50 km BEL cut, remeshed BEL sheet with full prior (837 modes), UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_remesh_unr with 837 BEL eigenmodes instead of 273. They keep 99% of the prior variance on the remeshed sheet, as 273 do on the first sheet, so the BEL prior is 0012's Matern field on a different mesh. The fit recovers fully, slightly better than 0012's (1.5% after Tohoku; with 273 modes it was 5% worse). Trench afterslip (Mw 8.39 at 2 yr), first-year afterslip in the main rupture (0.93 m), southwest Japan residuals and Nankai coupling are unchanged, so the results do not depend on how the BEL sheet is meshed: new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-13T23:20:35Z",
+      "manifest": "starter_belcut50_remesh_m99_unr/manifest.json",
+      "bytes_total": 9646850
+    },
+    {
+      "id": "starter_belcut50_jtonly_unr",
+      "label": "0016 \u00b7 Starter, 50 km BEL cut, Japan-Trench-only BEL sheet (none south of 34.63\u00b0N), UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_remesh_m99_unr on a 30 km BEL sheet bounded by the Japan Trench mesh's 30 km contour and 34.63N, so there is no BEL beneath Kyushu, Shikoku or the Ryukyus. 1906 of 1987 triangles are kept after the forearc cut and after dropping 24 beneath the shallow Philippine Sea slab in Tokai and Kanto; 666 modes keep 99% of the prior variance. The fit is about 5% worse, almost entirely in Kyushu, where residuals double in every postseismic window (a coherent westward misfit of about 2 mm/yr). The same misfit appears in the interseismic windows, where the BEL is off in every experiment, so the full sheet's BEL beneath Kyushu absorbs a standing block-model misfit rather than a post-Tohoku signal. Without it, shallow Nankai coupling drops (off Kyushu from 0.3 to near 0) to make up part of it. Residuals at the Bungo Channel, Shikoku, Kii and Tokai barely change, and trench afterslip is slightly smaller (Mw 8.37 at 2 yr): new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-14T00:03:48Z",
+      "manifest": "starter_belcut50_jtonly_unr/manifest.json",
+      "bytes_total": 9512109
+    },
+    {
+      "id": "starter_belcut50_tohoku_unr",
+      "label": "0017 \u00b7 Starter, 50 km BEL cut, Tohoku-latitudes-only BEL sheet (35.5\u201341.5\u00b0N), UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_jtonly_unr on Jack Loveless's 30 km BEL sheet bounded by the Japan Trench mesh's 30 km contour, 35.5N and 41.5N (87ee88c6), so there is also no BEL beneath Kanto, Tokai, northernmost Tohoku or Hokkaido. 938 of 976 triangles are kept after the forearc cut; 338 modes keep 99% of the prior variance. The fit after Tohoku is 27% worse than 0016's (median), almost entirely in Hokkaido north of 42.5N, where residuals rise from about 3 to 10 mm/yr: the stations move 7-16 mm/yr further west and 2-7 mm/yr further north than the model, a misfit that grows from 2012 to 2025. The interseismic windows, where the BEL is off in every experiment, show no consistent offset there (mean east residual -1.8 to +3.5 mm/yr), so unlike Kyushu's this is a post-Tohoku signal, which the BEL beneath Hokkaido absorbs in 0016. Dropping the BEL beneath Kanto and Tokai changes little. The remaining sheet slips 1.5-4 times faster, most of all far from the stations. Trench afterslip reaches Mw 8.35 at 2 yr, with half as much first-year afterslip in the main rupture (0.43 m instead of 0.92). w015-w022 have max R-hat 1.10-1.31 from a few slowly mixing BEL eigenmode coefficients: new Noto mesh, UNR IGS20 positions, same 596 GEONET sites and windows",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-17T03:33:51Z",
+      "manifest": "starter_belcut50_tohoku_unr/manifest.json",
+      "bytes_total": 9246948
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_unr",
+      "label": "0018 \u00b7 Starter, 50 km BEL cut, remeshed BEL sheet with full prior, CMT catalog through May 2025, UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_remesh_m99_unr (0015) with the GCMT catalog extended through May 2025. The 2025-01-13 Hyuga-nada Mw 6.8 step (35-48 mm at the Miyazaki stations) is now removed. Before, it stayed in the Jan-May 2025 window and, through the continuous trajectory fit, also inflated the Aug-Dec 2024 one: the post-Hyuga-nada speed-up at 960715 was 84 mm/yr and is now 50. Residual RMS within 100 km of the epicenter drops from 22 to 6 mm/yr in Aug-Dec 2024 and from 72 to 7.5 mm/yr in 2025, and the network-wide fit in 2025 improves by 45%. All other windows are unchanged. Nankai's -2 afterslip floor still binds after the 2024 Hyuga-nada earthquake, spreading afterslip over about 26,000 km2 from 1 to 47 km depth.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-18T04:20:50Z",
+      "manifest": "starter_belcut50_m99_cmt25_unr/manifest.json",
+      "bytes_total": 9647310
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_l30_unr",
+      "label": "0019 \u00b7 Starter, 50 km BEL cut, Nankai afterslip after the 2024 Hyuga-nada earthquake with a -20 floor and 30 km smoothing, CMT catalog through May 2025, UNR positions (exploratory MCMC)",
+      "description": "starter_belcut50_m99_cmt25_unr (0018) with Nankai coupling bounds [-20, 1] (sigmoid slope 15, so the prior is unchanged down to -1.5) and a 30 km Matern length scale with 501 modes (instead of 79 km and 44 modes) after the 2024-08-08 Hyuga-nada Mw 7.1. Only Aug 2024-May 2025 differ from 0018. The afterslip forms a compact patch of about 3,500 km2 at 19-38 km depth instead of 26,000 km2 from the trench to the base of the mesh. Its centroid is 7 km from the GCMT centroid in Aug-Dec 2024 and moves about 20 km north in 2025. Residual RMS within 100 km drops from 6.2 to 3.2 mm/yr, and the network-wide fit is unchanged. Nankai coupling at Kii drops from 0.53 to 0.43 in these windows. In a synthetic test, a 30 km patch at the hypocenter is recovered with this prior (correlation 0.75) but not with the 79 km one (0.23-0.31). A 20 km length scale tightens the patch slightly more with no change in fit.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-18T04:21:20Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_l30_unr/manifest.json",
+      "bytes_total": 9647582
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_unr",
+      "label": "0020 \u00b7 Starter, 50 km BEL cut, Nankai remeshed (5 km elements at Hyuga-nada, 24 km at the trench) with a length scale that follows the element size, -20 floor after the 2024 Hyuga-nada earthquake, CMT catalog through May 2025, UNR positions (exploratory MCMC)",
+      "description": "0018 with the -20 floor of 0019 after the 2024-08-08 Hyuga-nada Mw 7.1, on a remeshed Nankai mesh whose Matern length scale follows the element size. The mesh is the same slab surface with 5 km elements around the Hyuga-nada rupture, 16 km elsewhere and 24 km at the trench (2358 triangles instead of 1902). The length scale is about 34 km at Hyuga-nada, 79 km elsewhere (as in 0018) and 107 km at the trench, with 79 modes. In Aug-Dec 2024 the afterslip forms a compact patch of about 3,700 km2 at 17-42 km depth, as in 0019 (3,500 km2 with a 30 km length scale on the whole mesh), and residual RMS within 100 km is 3.4 mm/yr (0019: 3.2; with the -20 floor and 79 km: 5.4). Unlike in 0019, Kii coupling stays at 0.51 (0019: 0.43). In a synthetic test the same mesh and prior recover a 30 km patch at the hypocenter about as well as 0019's prior (correlation 0.74 against 0.78). Before Aug 2024 the fit in every window is within 1.2% of 0018's (median 0.1% better) and Nankai coupling moves by a median of 0.27 posterior standard deviations. Block motion is that of 0012-0019 (reference solve reused).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-18T20:06:42Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_unr/manifest.json",
+      "bytes_total": 10068957
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_unr",
+      "label": "0021 \u00b7 Starter, 50 km BEL cut, Nankai and Japan Trench remeshed with elements that grow away from the stations (up to 40 km at the trench; 5 km at Hyuga-nada), -20 floor after the 2024 Hyuga-nada earthquake, CMT catalog through May 2025, UNR positions (exploratory MCMC)",
+      "description": "0020 with both trench meshes remeshed so that the element size grows with the distance from the nearest station: the base size within 60 km (16 km for Nankai, 12 km for the Japan Trench), growing in proportion up to 40 km. The Japan Trench mesh has 1664 triangles instead of 3048, with ~30 km elements at the trench. Nankai keeps 0020's 5 km Hyuga-nada zone, gets ~30 km elements at the trench off Kyushu and Shikoku and 16 km again at the Suruga Trough (2322 triangles). The Japan Trench keeps a fixed 64 km length scale (area-weighted modes); Nankai's follows the element size as in 0020 (75 modes). The results match 0020: the fit in every window is within 0.3%, coupling moves by a median of 0.07 (Nankai) and 0.09 (Japan Trench) posterior standard deviations, and Tohoku afterslip is unchanged. In Aug-Dec 2024 the Hyuga-nada afterslip covers 3,400 km2 at 18-39 km depth (0020: 3,700 km2 at 17-42 km). In scratch tests a length scale that follows the element size on the coarse Japan Trench mesh moved unresolved postseismic slip to the trench, so it is not used there. Block motion is that of 0012-0020 (reference solve reused).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-19T02:57:07Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_unr/manifest.json",
+      "bytes_total": 8754772
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_unr_tsmooth_iid",
+      "label": "0022 \u00b7 Smoothed in time (one QP over all windows): linked coupling + afterslip states, celeri's noise model, Boso SSEs removed, UNR positions (MAP)",
+      "description": "One QP over all 25 windows of the Boso pilot (0021 with the Boso SSEs removed): background coupling linked through the whole record (departures of 0.1 over 5 yr, never reset) plus afterslip states for Tohoku (trench and BEL), the 2005 and 2021 Miyagi-oki, Noto and Hyuga-nada earthquakes. celeri's noise model (one \u03c3 per window, Student-t), so it fits like celeri and lets some window-specific signal into coupling. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-20T03:46:42Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_unr_tsmooth_iid/manifest.json",
+      "bytes_total": 4378440
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_unr_tsmooth_corr",
+      "label": "0023 \u00b7 Smoothed in time (one QP over all windows): linked coupling + afterslip states, correlated noise, cross-validated, Boso SSEs removed, UNR positions (MAP)",
+      "description": "One QP over all 25 windows of the Boso pilot (0021 with the Boso SSEs removed): background coupling linked through the whole record (departures of 0.1 over 5 yr, never reset) plus afterslip states for Tohoku (trench and BEL, one pattern on a decaying envelope), the 2005 and 2021 Miyagi-oki, Noto and Hyuga-nada earthquakes. Noise correlated within each window (1.4 \u00d7 the window \u03c3 over 150 km) and all scales tuned by cross-validation, so coupling shows only what persists and residuals hold the window-specific signal. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "2005-07-21",
+        "end": "2025-05-09"
+      },
+      "n_frames": 25,
+      "n_windows": 31,
+      "exported_at": "2026-10-20T03:46:43Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_unr_tsmooth_corr/manifest.json",
+      "bytes_total": 4378567
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr",
+      "label": "0024 \u00b7 Starter extended back to 1997 on a fixed 747-site network: 2003 Tokachi-oki windows, Boso slow slip events and 2000\u20132002 volcanic steps removed, UNR positions (exploratory MCMC)",
+      "description": "The Boso pilot (0021 with the Boso slow slip events removed) extended back to April 1997 on a fixed station network: the 747 GEONET sites with data in every year from 1997-04-01 to 2025-05-09, plus 112 far-field stations, so the station set doesn't change through the record. Every window was rebuilt and rerun. Before 2005 there are three windows of about 790 days (April 1997 to September 2003), then windows of 30, 91, 182 and 365 days after the 2003 Tokachi-oki Mw 8.3, with free reverse dip-slip on the Japan Trench for the first 91 days as after Tohoku, and a postseismic window up to the 2005 Miyagi-oki earthquake. Also removed as steps: a 2002 Boso slow slip event found by the matched filter, the 2000 Usu eruption, the 2000 Miyake-jima dike intrusion and the 2002 Hachijo-jima dike intrusion. From August 2005 the windows are the pilot's and match it (fit ratio 0.98 on the pilot's stations; Tohoku afterslip Mw 8.35\u20138.44 against 8.36\u20138.45). The early windows show coupling changes: Tokai drops from 0.67 to 0.14 during the 2000\u20132005 slow slip and recovers to 0.5\u20130.6; off Sanriku coupling rises from 0.53 to 0.68; off Hokkaido it is 0.97\u20130.99 before Tokachi-oki. Tokachi-oki trench afterslip reaches Mw 7.48 at 30 days and 7.64 at 1 yr; the first 30-day window still misfits Kushiro and Nemuro. Noise is higher before 2003 (fit 4.1\u20134.5 mm/yr against 3.2\u20133.6 after).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T00:49:36Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr/manifest.json",
+      "bytes_total": 11571504
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid",
+      "label": "0025 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): linked coupling + afterslip states including 2003 Tokachi-oki, celeri's noise model, fixed 747-site network, UNR positions (MAP)",
+      "description": "One QP over all 33 rate windows of 0024 (April 1997 to May 2025 on a fixed 747-site network, Boso slow slip events and volcanic steps removed): background coupling linked through the whole record (departures of 0.1 over 5 yr, never reset) plus afterslip states for the 2003 Tokachi-oki (new; its amplitude is not tuned), Tohoku (trench and BEL), the 2005 and 2021 Miyagi-oki, Noto and Hyuga-nada earthquakes. celeri's noise model (one \u03c3 per window, Student-t), with 0022's settings (not re-tuned). It fits as well as celeri's windows (median ratio 1.00) and its coupling follows their changes at about 60\u201370% of their amplitude: Tokai 0.62 \u2192 0.28 (2001\u20132003) \u2192 0.52 (2008), during and after the 2000\u20132005 slow slip; off Sanriku 0.55 \u2192 0.83 (2003\u20132006); the deep southern Japan Trench 0.40 \u2192 0.05 (2007\u20132009); the Bungo Channel 0.37 \u2192 0.15 (the 2010 slow slip). The Tokachi-oki afterslip goes into its own state, so background coupling off Hokkaido drops only from 0.95 to 0.86\u20130.90, and the first 30 days fit better than celeri's window (residual RMS 23 against 38 mm/yr). MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T00:49:56Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid/manifest.json",
+      "bytes_total": 5798626
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr",
+      "label": "0026 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): linked coupling + afterslip states including 2003 Tokachi-oki, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0025 with 0023's correlated noise (1.4 \u00d7 the window \u03c3 over 150 km) and its cross-validated scales, which were tuned on the 2005\u20132025 pilot and not re-tuned here. The fit is 27% worse than celeri's windows (median) and coupling is nearly static: Tokai stays at 0.47\u20130.51 through the 2000\u20132005 slow slip, off Hokkaido at 0.77\u20130.78 and the Bungo Channel at 0.24\u20130.29; only Sanriku drifts (0.50 \u2192 0.63). With this noise model and the drift prior, patch-scale coupling changes lasting a few years go into the residuals rather than into coupling. Tohoku trench afterslip is Mw 8.36 at 1 yr. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T00:50:12Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr/manifest.json",
+      "bytes_total": 5798122
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid_loc94",
+      "label": "0027 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): afterslip confined along the trench near each rupture, plus 1994 Sanriku-haruka-oki afterslip from before the record, celeri's noise model, fixed 747-site network, UNR positions (MAP)",
+      "description": "0025 with two changes. (1) The afterslip states of the 2003 Tokachi-oki and 2011 Tohoku earthquakes are confined along the trench: the full prior over the rupture length (120 and 450 km, centred on the CMT centroids), falling off over 100 km beyond its ends, measured along the trench. Before, Tokachi-oki's taper was a 271 km Gaussian and Tohoku's trench state had none, so the first week after Tohoku put about \u2212550 mm/yr of afterslip off Hokkaido. Now the trench there keeps its coupling (about +60 mm/yr), the Tohoku afterslip is unchanged (Mw 8.37 at 1 yr) and the fit changes by less than 1% in every window. (2) An afterslip state for the 1994 Sanriku-haruka-oki Mw 7.7 (150 km along the trench), whose Omori envelope is already decaying when the record starts in 1997. It takes up the coupling rise off Sanriku: in the 1994 rupture zone background coupling stays at 0.91\u20130.92 from 1997 to 2003 (without the state: 0.74 \u2192 0.84) while the afterslip decays from 12 to 7 mm/yr, about Mw 7.4 from April 1997 to September 2003. The fit is the same with or without it, so the data allow this afterslip but don't require it. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T03:56:37Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid_loc94/manifest.json",
+      "bytes_total": 5798701
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94",
+      "label": "0028 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): afterslip confined along the trench near each rupture, plus 1994 Sanriku-haruka-oki afterslip from before the record, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0026 with the same two changes as 0027. (1) Tokachi-oki and Tohoku afterslip confined along the trench near each rupture, which removes about \u2212530 mm/yr of afterslip off Hokkaido in the first week after Tohoku and \u221250 to \u2212180 mm/yr in the following three months. (2) An afterslip state for the 1994 Sanriku-haruka-oki Mw 7.7: background coupling in its rupture zone is 0.63\u20130.64 from 1997 to 2003 (without the state: 0.56 \u2192 0.60) while the afterslip decays from 13 to 4 mm/yr, about Mw 7.4 from April 1997 to September 2003. The fit is within 2% of 0026's in every window except October\u2013December 2003 (+4.8%). MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T03:56:39Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94/manifest.json",
+      "bytes_total": 5798194
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid_loc94s",
+      "label": "0029 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0027 with smoother Tohoku afterslip kept down dip of the trench edge, celeri's noise model, fixed 747-site network, UNR positions (MAP)",
+      "description": "0027 with the Tohoku afterslip state smoothed and kept down dip of the poorly resolved trench edge: its own Mat\u00e9rn length scale of 150 km instead of the trench mesh's 64 km, and a prior cut to 20% shallower than 5 km, ramping back to full below 20 km. Before, the afterslip was a sum of mesh modes whose up-dip lobes, clipped by the reverse-slip bound, left short-wavelength patches near the trench. Now 31% of the first-year afterslip moment is shallower than 15 km (0027: 56%; celeri's 0024: 42%), and the fields look like 0024's: two down-dip patches near 39.5\u00b0N and 37\u00b0N plus the Boso corner. Tohoku afterslip is Mw 8.27 at 1 yr, 8.33 at 2 yr and 8.39 at 5 yr (0027: 8.37, 8.44, 8.51). The fit after Tohoku is 1.5% worse (median; 5.5% in March\u2013April 2011). The length scale and taper depths were chosen by eye, not cross-validated. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T12:10:20Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid_loc94s/manifest.json",
+      "bytes_total": 5798378
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s",
+      "label": "0030 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0028 with smoother Tohoku afterslip kept down dip of the trench edge, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0028 with 0029's smoother, down-dip Tohoku afterslip state (150 km length scale instead of 64 km; prior cut to 20% shallower than 5 km, full below 20 km). 25% of the first-year afterslip moment is now shallower than 15 km (0028: 52%), and the short-wavelength patches near the trench are gone. Tohoku afterslip is Mw 8.25 at 1 yr, 8.31 at 2 yr and 8.38 at 5 yr (0028: 8.36, 8.42, 8.50). The fit after Tohoku is 2.2% worse (median), and 16% worse from September 2011 to March 2012. The length scale and taper depths were chosen by eye, not cross-validated. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-21T12:10:30Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s/manifest.json",
+      "bytes_total": 5798054
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_drift",
+      "label": "0031 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0030 with background coupling free to change where the data demand it, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0030 with an adaptive prior on changes in background coupling. A change between windows larger than half its prior SD over a patch about 100 km across costs only logarithmically more (iteratively reweighted), so a change the data demand is no longer shrunk away. Windows shorter than 180 days, and patches where an afterslip state's prior is larger than the background's, keep 0030's Gaussian prior; without these rules the early postseismic signal and part of the Tohoku afterslip went into the background. The background changes in 11 patch-windows: the Bungo Channel in 2009\u201311 and 2018\u201321, during the 2010 and 2018\u201319 slow slip events (regional mean 0.20 in 2009\u201311, against 0.24 in 0030); central Shikoku in 2022\u201323; and the deep southern Japan Trench in 2007\u201309 (0.11, against 0.19), where the 2008 Ibaraki-oki (Mw 6.8) and Fukushima-oki (Mw 6.9) earthquakes, not modeled as events, may contribute afterslip. Elsewhere it matches 0030, and the fit is unchanged. The 2000\u201305 Tokai slow slip event is still not resolved. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-22T23:04:00Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_drift/manifest.json",
+      "bytes_total": 5798607
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02",
+      "label": "0032 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0030 with twice the background drift, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0030 with twice the drift in background coupling (departures from the static pattern of 0.2 instead of 0.1 over 5 years), so the background moves a little in every window. The change in Nankai coupling between consecutive windows rises from 0.012 to 0.027 RMS (celeri's per-window runs, 0024: 0.22), and the fit is 1.8% better than 0030's (median). Window cross-validation prefers it slightly (log predictive density +27, mostly after 2011; drift 0.3 scores the same), but the difference is under 0.001 per datum. After Tohoku the background off Miyagi is 0.10\u20130.17 lower than in 0030 through 2025 (off Sanriku 0.05\u20130.13), with the afterslip moment unchanged (Mw 8.25, 8.31 and 8.38 at 1, 2 and 5 yr): that split between background and afterslip is set by the priors. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-22T23:08:00Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02/manifest.json",
+      "bytes_total": 5798272
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68",
+      "label": "0033 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0032 with afterslip states for the Mw 6.8\u20137.0 Japan Trench earthquakes, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0032 with afterslip states for the six Japan Trench earthquakes of Mw 6.8\u20137.0: 2003 off Miyagi, 2004 Kushiro-oki, 2008 Ibaraki-oki and Fukushima-oki, and 2015 and 2021 off Miyagi. In 0032 the larger states and the background took up their afterslip. Each falls inside a window, and its state starts in that window, weighted by the part of the window after the earthquake. The Kushiro-oki state takes the patch off eastern Hokkaido in 2004\u201305 that 0032 gave to Tokachi-oki, and the 2008 states take about half of 0032's drop in deep southern Japan Trench coupling in 2008 (\u22120.06 instead of \u22120.11). First-year afterslip of the new states is Mw 6.5\u20137.0; the 2008 pair's (6.82 and 6.99) is as large as the earthquakes. The fit is 0.2% better than 0032's (median), window cross-validation prefers it slightly (log predictive density +24), and Tohoku afterslip is unchanged. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-26T12:17:24Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68/manifest.json",
+      "bytes_total": 5798426
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_top0ev",
+      "label": "0034 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0033 with no afterslip on the trench edge, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0033 with no afterslip on the top row of triangles of the Japan Trench and Nankai Trough meshes: every afterslip state is held at zero there (\u03c3 0.5 mm/yr), and background coupling is left free. It removes the band of shallow Tokachi-oki afterslip along the trench, but window cross-validation is 1,181 lower than 0033's (log predictive density), almost all of it in the first two years after Tohoku and most in the first week: the held-out onshore data favour some afterslip at the trench edge then. Tohoku afterslip drops to Mw 8.20, 8.26 and 8.33 at 1, 2 and 5 yr (0033: 8.25, 8.31 and 8.38), and the fit is about 1% worse (median; up to 6%). MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-26T12:17:26Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_top0ev/manifest.json",
+      "bytes_total": 5798161
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_top0",
+      "label": "0035 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0033 with zero slip deficit on the trench edge, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0033 with zero total slip deficit on the top row of triangles of the Japan Trench and Nankai Trough meshes (\u03c3 0.5 mm/yr), as in celeri's 0013: a creeping trench edge in every window. Top-row background coupling drops from about 0.25 to 0.04 on the Japan Trench and from 0.75 to 0 on the Nankai Trough (medians over the windows). The fit is 4.8% worse than 0032's (median; up to 15%), most of all at the Suruga Trough (28%, up to 93%), where stations are 20\u201335 km from the pinned edge, and window cross-validation is 2,492 lower than 0033's (log predictive density). Tohoku afterslip drops by about 0.05 Mw. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-26T12:17:27Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_top0/manifest.json",
+      "bytes_total": 5798138
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_tok80",
+      "label": "0036 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0033 with the Tokachi-oki afterslip kept around its rupture, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0033 with the 2003 Tokachi-oki afterslip kept around its rupture. In 0027\u20130035 its prior was confined along the trench, measured from the earthquake's nearest point on the trench edge. Tokachi-oki lies about 100 km landward of the junction of the Japan and Kuril trenches, so that point fell on the junction's corner and the full prior reached south to northern Sanriku, where 0032 put a separate patch of up to 1.4 m/yr in the first month. Here the prior falls off as a Gaussian with an 80 km scale around the Global CMT centroid, and the Tokachi-oki afterslip is one connected patch in every window. The total slip deficit shows it as one patch, plus the 2004 Kushiro-oki afterslip; from 2004 on, afterslip appears only where it exceeds the background deficit of about 65 mm/yr. The fit is within 0.1% of 0032's (median; 2% at most), window cross-validation is 16 above 0032's and 8 below 0033's, and Tohoku afterslip is unchanged. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-26T12:17:29Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_tok80/manifest.json",
+      "bytes_total": 5798461
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame",
+      "label": "0037 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0036 with a reference-frame error per window and afterslip kept near its source, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0036 with three changes that keep afterslip near its source. First, a reference-frame error in each window: a rotation of the GEONET network estimated with the model (prior SD twice the window's noise SD). The windows after the 2003 Tokachi-oki earthquake have network-wide velocity offsets (Oct\u2013Dec 2003: about 13 mm/yr south and 7 mm/yr east in every region from Kyushu to Hokkaido; the next window the reverse), which afterslip far offshore had partly absorbed, most visibly as a patch near the trench off Miyagi in the state of the 2003-10-31 Mw 7.0 earthquake. Second, the Tokachi-oki afterslip prior falls off over 50 km from the Global CMT centroid instead of 80 km: 80% of the afterslip moment lies within 100 km of it (0036: 55\u201359%), peaking at 21 km depth instead of 14. Third, the smaller Japan Trench afterslip states (Mw 6.8\u20137.2) get Tohoku's depth taper, so the off-Miyagi afterslip that remains is a small patch at about 29 km depth near the coast. Window cross-validation is 121 above 0036's (the frame term alone: +184; the tighter taper costs 63, almost all in the first month after Tokachi-oki, where the held-out data prefer broader afterslip). The fit is about 6% better than 0036's (median), and Tohoku afterslip is about unchanged (Mw 8.25, 8.30 and 8.37 at 1, 2 and 5 yr). Model velocities include the frame term. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-11-05T04:56:56Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame/manifest.json",
+      "bytes_total": 6000230
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk",
+      "label": "0038 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0037 with block rotations estimated from the 1997\u20132011 record, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0037 with the block rotations estimated in the record model instead of fixed to the 2005\u20132011 reference solve, whose Hokkaido velocities carry the decade-long transient after the 2003 Tokachi-oki earthquake. The rotations of the 15 blocks with GEONET sites are static unknowns (prior SD 10 mm/yr at each block's sites, centred on the reference), estimated from the windows before Tohoku (1997\u20132011) and held fixed after it; the kinematic slip rates follow them. Estimated from every window instead, they took up the long post-Tohoku transient. Relative to the reference, the small blocks of central Honshu move 4\u20137 mm/yr east, the Hokkaido and northern Tohoku blocks 1\u20134 mm/yr, mostly east, and southwest Japan and the Ryukyus 2 mm/yr or less. The estimate does not move Hokkaido back toward its 1997\u20132003 velocities: the record's correlated noise (1.4 mm/yr over 150 km) treats an island-wide offset largely as noise, so the rotations are set mainly by shorter-wavelength velocity structure, and the model still runs about 7 mm/yr east of the 1997\u20132003 Hokkaido velocities. Window cross-validation is 357 above 0037's and higher in every window, including the post-Tohoku windows the rotations were not fit to (+234). Plain residuals are slightly larger before 2011 and smaller after. Background coupling rises by about 0.04 off Sanriku and 0.08 off Miyagi\u2013Fukushima; Tohoku afterslip is unchanged. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-11-05T04:56:53Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk/manifest.json",
+      "bytes_total": 6000299
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel",
+      "label": "0039 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0038 with a slow far-field Tokachi-oki state (interim), correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0038 with a slow far-field state for the 2003 Tokachi-oki earthquake on the base-of-elastic-layer sheet: one Hokkaido-wide slip pattern (300 km Gaussian taper around the centroid) whose prior decays as an Omori law with c = 1 yr. In 0038 the post-Tokachi-oki transient across Hokkaido had no state of its own. The new state takes the island-wide east-southeast motion of the first years (about 11 mm/yr in the first month, 1\u20132 mm/yr in 2006\u20132011) and lowers the Hokkaido residual RMS for 2003\u20132011 from 8.9 to 6.4 mm/yr. While it is active it replaces the per-window BEL term everywhere, including beneath Kyushu, so southwest Japan fits slightly worse in 2003\u20132011. The block rotations, re-estimated from the 1997\u20132011 windows, barely change, and the model still runs 6\u20137 mm/yr east of the 1997\u20132003 Hokkaido velocities. An interim model: time-varying block rotations are being tested next. Window cross-validation is 349 above 0038's (706 above 0037's) and higher in every window. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-11-05T04:56:51Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel/manifest.json",
+      "bytes_total": 5999835
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel_dep",
+      "label": "0040 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0039 with time-varying Hokkaido block rotations after Tokachi-oki, correlated noise, fixed 747-site network, UNR positions (MAP)",
+      "description": "0039 with time-varying rotations of the okhotsk and kuril-north blocks after the 2003 Tokachi-oki earthquake: a decaying rigid motion of each block (prior 10 mm/yr in the first year, Omori decay with c = 10 yr), estimated with the static rotations from the 1997\u20132011 windows. In 0039 the static rotations still carried part of the post-Tokachi-oki transient; now it goes into the departures, about 8\u201311 mm/yr in the first month, 2\u20134 mm/yr in 2006\u20132015 and 1\u20132 mm/yr after 2018. The static Hokkaido rotations move 2\u20133 mm/yr back west (kuril-north \u22122.6 mm/yr east against \u22120.8 in 0039; okhotsk +0.9 against +2.6), and the Hokkaido residual RMS before 2003 drops from 5.5 to 5.1 mm/yr. On synthetic data the departures recover 97\u201399% of a planted decaying block motion, of which 6 of 10 mm/yr went into the static rotations without them. Window cross-validation is 10.5 above 0039's and higher in 26 of 33 windows; it can't tell this block answer from 0039's, because it scores with the same correlated noise that makes island-wide offsets cheap. The correlated-noise level of 0038\u20130040 is the cross-validation optimum. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-31T12:25:42Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel_dep/manifest.json",
+      "bytes_total": 5798676
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel_dep_l300",
+      "label": "0041 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0040 with a 300 km correlated-noise length, fixed 747-site network, UNR positions (MAP)",
+      "description": "0040 with the length of the spatially correlated noise raised from 150 to 300 km, the window cross-validation optimum (75\u20131200 km and 0.7\u20132.8 times each window's noise sd tested): 369 above 0040's and higher in 28 of 33 windows. No single setting suits every window: the quiet windows score best at about 600 km, while the five windows dominated by a large earthquake (the first year after Tohoku and the 2024 Hyuga-nada window) prefer a higher noise level at a shorter length. With the longer length an island-wide offset costs even less, and the static Hokkaido block rotations, estimated from the 1997\u20132011 windows, move back east by 1\u20132 mm/yr (kuril-north \u22120.5 mm/yr east against \u22122.6 in 0040; okhotsk +2.3 against +0.9). The model again runs about 6\u20137 mm/yr east of the 1997\u20132003 Hokkaido velocities, and Hokkaido fits slightly worse after Tohoku (residual RMS 13.0 against 11.8 mm/yr). The Hokkaido block motion moves by about 3 mm/yr between 150 and 600 km, a range the data can't narrow. Tohoku afterslip is unchanged. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-10-31T18:09:27Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel_dep_l300/manifest.json",
+      "bytes_total": 5798569
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel_dep_l300_slow",
+      "label": "0042 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): 0041 with a slow Tokachi-oki state, fixed 747-site network, UNR positions (MAP)",
+      "description": "0041 with a second Tokachi-oki state on the BEL beside the first, decaying much more slowly (Omori law, c = 20 yr; first-year prior 20 mm/yr, still 10 mm/yr in 2025) and spread wider (450 km Gaussian taper). Window cross-validation is 253 above 0041's and higher in 30 of 33 windows; 181 of the gain is after Tohoku. Slower and broader versions score better, and with the slow state the block departures add almost nothing. The state isn't mantle relaxation: it comes out as a slip deficit beneath eastern Hokkaido that on its own moves the sites 4\u201316 mm/yr west. The first Tokachi-oki state grows to more than cancel it at first, so the two together change the shape of the Hokkaido time series: the model moves about 6\u20137 mm/yr further east in the first months after the earthquake and then returns faster, ending 1\u20134 mm/yr west of 0041 in 2005\u20132011 and up to 1.5 mm/yr west by 2025. That removes most of 0041's eastward misfit in 2007\u20132011 and about halves it after 2016, but adds about 4 mm/yr of misfit in early 2004. The slow state also reaches northern Tohoku, so part of the late gain may be a broad post-Tohoku signal that it happens to fit. The 1997\u20132003 offset, the static rotations and the preferred correlated-noise length are unchanged; holding the Hokkaido rotations at a fit to the 1997\u20132003 velocities scores 42 lower and leaves the slow state as it is. Tohoku afterslip is unchanged. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-11-01T01:06:17Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_corr_loc94s_ou02_m68_frame_blk_tbel_dep_l300_slow/manifest.json",
+      "bytes_total": 5798896
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse",
+      "label": "0043 \u00b7 Smoothed in time, 1997\u20132025 (one QP over all windows of 0024): uncorrelated noise, background coupling from \u22121 to 1, three long-term slow slip events, fixed 747-site network, UNR positions (MAP)",
+      "description": "0042 with four changes. The noise is uncorrelated: 0042's correlated term (1.4 times each window's noise sd over 300 km) was the cross-validation optimum among correlated models but suppresses real signals, so it is dropped on physical grounds; scores with and without it use different likelihoods and can't be compared. The per-window frame term stays. Background coupling can reach \u22121 on the Nankai, Japan Trench and Sagami interfaces (the crustal faults stay at 0\u20131); this relabels little afterslip, with negative background only 2.8% of the 2011\u20132025 Japan Trench reverse moment. The Hokkaido rotation departures are gone: without correlated noise the 1997\u20132003 Hokkaido offset falls from 7.3 to 2.4 mm/yr (2.0 with departures), and cross-validation is 94 higher without them. Three long-term slow slip events are episodes of their own on the Nankai interface: Bungo Channel 2010 (Mw 7.02, 148 mm), Bungo Channel 2018\u201319 (Mw 7.07, 145 mm) and Tokai 2000\u201305 (Mw 7.18, 198 mm). Their slip is about 6\u201310\u00b0 from the plate direction at Bungo and 22\u00b0 at Tokai. Together they add 794 to cross-validation, higher in 24 of 33 windows, and they remove the dips in background coupling at Bungo and Tokai: Bungo in 2009\u201311 rises from 0.10 to 0.37, Tokai in 2001\u201303 from 0.39 to 0.68. In those windows coupling above 1 on the Nankai mesh is the episodes' strike-slip divided by a small plate rate, not a real value. Nankai coupling changes more from window to window than in 0042 (0.073 against 0.031), and the fit to the windows is much closer (median 1.01 against 1.23 times 0024's). Tohoku afterslip is about the same, Mw 8.27, 8.32 and 8.39 at 1, 2 and 5 years. The Boso slow slip events are still removed as steps here. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 33,
+      "n_windows": 39,
+      "exported_at": "2026-11-05T04:56:48Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse/manifest.json",
+      "bytes_total": 6000659
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso",
+      "label": "0044 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 44 windows): uncorrelated noise, background coupling from \u22121 to 1, eleven slow slip events as signal (six Boso, Bungo Channel 1997, 2003, 2010 and 2018\u201319, Tokai 2000\u201305), fixed 747-site network, UNR positions (MAP)",
+      "description": "0043 on a new base experiment, with the Boso slow slip events kept in the data instead of removed as steps. Each Boso event and the Bungo Channel 2018\u201319 event has a window of its own, and Sagami has 30 modes at a 20 km length scale instead of 9 at 67 km. Bungo Channel 2018\u201319 needed its window: a long window holding a step-like event gets one straight line, and short neighbouring windows absorb the mismatch. That artifact is in 0043's 2021 window and isn't here. The six Boso events (2002, 2007, 2011, 2014, 2018, 2024) share one slip pattern with limited departures. Holding out one event, the pattern from the other five predicts it, which beats independent events by 16,982 in window cross-validation; the Boso episodes together gain 22,669 and score higher in 36 of 44 windows, though 2007\u201309 (w016) loses 856 for a reason not yet known. Boso total Mw is 6.74\u20136.89 against the published 6.4\u20136.7, but only the moment within 40 km of a station is resolved, Mw 6.40\u20136.63; the rest lies offshore and scales with the prior. Peaks are at 140.61\u2013140.81E, 34.85\u201334.96N, 20\u201323 km. Over 2002\u20132024 the six events release about 0.6\u20130.7 of the deficit that accumulates near Boso, where background coupling stays near 0.65 instead of sagging to 0.36 as it does in 0043; that level is weakly constrained. Bungo Channel 1997 (Mw 7.00) and 2003 (Mw 6.94, September to early November, its slower tail not modelled) are added as episodes, alongside Bungo Channel 2010 (Mw 7.02), Bungo Channel 2018\u201319 (Mw 7.10) and Tokai 2000\u201305 (Mw 7.18, about 0.2 above published values). Episode slip has a uniform rate between its dates. In episode windows, coupling outside \u22121 to 1 is the episodes' strike-slip divided by a small plate rate, not a real value. Tohoku afterslip is unchanged, Mw 8.26, 8.32 and 8.39 at 1, 2 and 5 years. Nankai and Japan Trench background coupling differ from 0043 by 0.02\u20130.11 RMS. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 44,
+      "n_windows": 50,
+      "exported_at": "2026-11-05T04:56:45Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso/manifest.json",
+      "bytes_total": 7857582
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum",
+      "label": "0045 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 47 windows): 0044 with a fault mesh and an afterslip state for the 2016 Kumamoto earthquakes, uncorrelated noise, background coupling from \u22121 to 1, eleven slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0044 on a base experiment with a fault mesh for the 2016 Kumamoto earthquakes (Mw 7.04): the northern Hinagu and Futagawa faults on to Aso, 209 triangles dipping 60\u201380\u00b0 northwest from the mapped traces to 30 km. The amur\u2013kuwana block boundary follows the fault, the mainshock gets windows ending 91 and 365 days after it, and the record has a Kumamoto afterslip state with Omori decay (c = 0.05 yr, first-year prior 300 mm/yr). Window cross-validation is 5,549 above the same model without the state and higher in 37 of 47 windows. Residuals within 30 km of the rupture fall from 50 to 6.7 mm/yr in the first 91 days and from 10.1 to 2.4 mm/yr in the rest of the first year. The afterslip is right-lateral and reaches Mw 6.79 in one year and 6.86 in two, but 72% of it lies below 15 km and 29% on the mesh's 30 km bottom row, so the deep part probably stands in for flow in a weak lower crust as well as afterslip. A second state on the BEL sheet beneath the rupture adds at most 105, all in the first window, and isn't kept. Elsewhere the model matches 0044: Tohoku afterslip is Mw 8.26, 8.32 and 8.38 at 1, 2 and 5 years, and the slow slip events are within 0.01 in Mw. Coupling far outside \u22121 to 1 isn't a real value: in episode windows it is the episodes' strike-slip divided by a small plate rate, and on the Kumamoto mesh after the first year it is afterslip divided by a dip-slip plate rate below 1 mm/yr. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 47,
+      "n_windows": 54,
+      "exported_at": "2026-11-05T04:56:42Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum/manifest.json",
+      "bytes_total": 8528827
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25",
+      "label": "0046 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 48 windows): 0045 with an afterslip state for the January 2025 Hyuga-nada earthquake, the 2000 Izu dike removed out to 300 km and a window for the 1997 Bungo Channel slow slip event, uncorrelated noise, background coupling from \u22121 to 1, eleven slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0045 with three changes from a search of the residuals for signal the models miss. The 13 January 2025 Hyuga-nada earthquake (Mw 6.77), just below the Mw 6.8 cutoff for event states, gets an afterslip state, and the 2024 Hyuga-nada state decays more slowly (Omori c = 0.05 yr). Window cross-validation is 5,631 higher on 0045's base experiment, all of it in the two windows after August 2024. Without the new state, 0045's 2024 state took up the 2025 event's afterslip and reached Mw 7.17 by May 2025, more than the Mw 7.1 earthquake. Here the 2024 state reaches Mw 7.06 and the 2025 state 6.83; their sum and the fit are about the same. The base experiment has two fixes. The 2000 Izu dike intrusion is removed within 300 km instead of 150, since its step is still 3\u201311 mm at 150\u2013300 km. The 1997 Bungo Channel slow slip event gets a window of its own. Together they cut 1999\u20132000 residuals by 15\u201323% at Tokai, Kanto and Bungo and remove a dip in 1999\u20132000 Tokai background coupling (0.70 to 0.77). They also move the Bungo 1997 slip peak beside the other Bungo events (Mw 7.00 to 6.95) and lower Tokai 2000\u201305 from Mw 7.18 to 7.16. The first 44 days of 1997 are now too short to run. A looser background prior lowers cross-validation by about 5,200, so the background isn't hiding changes in coupling. After 2003 the model matches 0045. Coupling far outside \u22121 to 1 isn't a real value: it is episode strike-slip, or Kumamoto afterslip, divided by a small plate rate. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 48,
+      "n_windows": 56,
+      "exported_at": "2026-11-05T04:56:38Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25/manifest.json",
+      "bytes_total": 8701405
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50",
+      "label": "0047 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 48 windows): 0046 with the 2009 Suruga Bay earthquake, shallow Mw 5.6\u20136.0 earthquakes and the 2000 Usu eruption (to 90 km) removed as steps and a tighter prior on the 2000\u201305 Tokai slow slip event, uncorrelated noise, background coupling from \u22121 to 1, eleven slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0046 after a follow-up to the residual search. The base experiment removes three sets of steps the earlier models left in. The 11 August 2009 Suruga Bay earthquake (JMA M6.5), missing from the Global CMT catalog, is removed as a step within 100 km. Shallow earthquakes (CMT depth 30 km or less) of Mw 5.6\u20136.0 are now steps too, among them Yamaguchi 1997, Iwate 1998, Awaji 2013 and Miyake-jima 2013. The 2000 Usu eruption is removed within 90 km instead of 30, since its step is still 2 mm at 70\u201390 km. Together they cut 2009\u20132011 residuals by 26% at Suruga and 23% at Tokai, 1997 residuals at Yamaguchi by 35%, and spring 2013 residuals in the Izu islands by 60%. Two places get worse: two Suruga sites in June\u2013September 2011, and one Iwate site in 1998, where the 1998 intrusion beneath Iwate volcano is now exposed. The 2000\u201305 Tokai slow slip event gets a tighter prior (sd of total slip 50 mm instead of 150, taper 50 km instead of 80), which raises window cross-validation by 75. Its Mw drops from 7.17 to 6.99, within the range of published GEONET inversions (about 7.0\u20137.1); the data pin it only to about \u00b10.1, and Tokai background coupling in 2000\u201305 is 0.04\u20130.09 lower. Elsewhere the model matches 0046. Coupling far outside \u22121 to 1 isn't a real value: it is episode strike-slip, or Kumamoto afterslip, divided by a small plate rate. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 48,
+      "n_windows": 56,
+      "exported_at": "2026-11-05T04:56:27Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50/manifest.json",
+      "bytes_total": 8711588
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_huber",
+      "label": "0048 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 48 windows): 0047 with a heavy-tailed background calibrated on null runs, uncorrelated noise, background coupling from \u22121 to 1, eleven slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0047 with a heavy-tailed background. Where a roughly 100 km patch's change in background coupling into a window of at least 180 days exceeds 1.07 prior sd, its prior is relaxed (log tail), so a large change costs little more than one of that size. The threshold is the largest such change in three runs on data with no background change (0047's solution with its background held constant plus its real residuals moved between windows); on fresh runs of that kind, noise alone relaxes 0\u20134 patch-windows. The real data relax 31: the southern Japan Trench off Boso and beneath Ibaraki in 2004\u201309, the Bungo Channel in 2004, shallow off Kii and Tokai after the September 2004 off-Kii earthquakes, Hyuga-nada in 2021\u201322, beneath Ise Bay in 2017\u201318 and the Kuril trench (strike-slip) in 2006\u201307. The fit improves by only 0.5% in those windows, several of the largest changes are far offshore or in strike-slip and swing between windows, and the reweighting had not converged after six passes, so read the relaxed changes as candidates, not measurements. Changes planted into the data are recovered as by 0047 (66\u201393% of a 0.3 drop near the coast). Block rotations are 0047's. Coupling far outside \u22121 to 1 isn't a real value: it is episode strike-slip, or Kumamoto afterslip, divided by a small plate rate. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 48,
+      "n_windows": 56,
+      "exported_at": "2026-11-05T22:26:12Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_huber/manifest.json",
+      "bytes_total": 8711418
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4",
+      "label": "0049 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 48 windows): 0047 with three more slow slip events (off Choshi 2004\u201305, Shima 2017\u201318, Tokai 2024\u201325) and the 2003 Bungo Channel event lengthened to 2002\u201304, uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0047 with the slow slip that window cross-validation supports in stability checks of the record. The 2003 Bungo Channel slow slip event is lengthened from its September\u2013November 2003 main pulse to its published duration, October 2002 to March 2004, and three slow slip events are new: off Choshi on the Japan Trench (March 2004 to November 2005), beneath the Shima Peninsula (April 2017 to May 2018) and at Tokai (January 2024 to May 2025, the accelerating phase of the slow slip the Earthquake Research Committee reports since early 2022). Together they raise window cross-validation by 714. Their Mw: Bungo 7.01 (published about 7.1), Shima 6.57 (published about 6.5), Tokai 2024 6.61, and off Choshi 7.08, an upper bound because the slip is offshore, where its size scales with the prior. With them, year-to-year changes in background coupling are nearly as small as in runs on data with no change, and Tokai background coupling stays at 0.30\u20130.41 in 2024\u201325 instead of dropping to 0.06\u20130.22. Each episode slips at a uniform rate, so the 30 days after the 2003 Tokachi-oki earthquake, during the Bungo main pulse, fit worse than in 0047: the model falls short of the Bungo sites' eastward motion by about 80 mm/yr. Elsewhere the fit matches 0047. Coupling far outside \u22121 to 1 isn't a real value: it is episode strike-slip, or Kumamoto afterslip, divided by a small plate rate. MAP solution, no posterior SD.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 48,
+      "n_windows": 56,
+      "exported_at": "2026-11-07T06:59:25Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4/manifest.json",
+      "bytes_total": 8711579
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4",
+      "label": "0050 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 48 windows): 0049 with the Amur\u2013southwest Japan block boundary along the whole 2016 Kumamoto rupture, reaching it at the Hinagu end along the south side of the Unzen graben, uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0049 with cleaner block geometry at Kumamoto. In 0045\u20130049 the boundary between the Amur and southwest Japan (kuwana) blocks met the Kumamoto fault mesh at the Hinagu\u2013Futagawa junction, so the 21 km Hinagu part of the mesh lay on no block boundary. Here the boundary follows the whole mesh, with two new segments on the northern Hinagu trace. The segment from Unzen now runs along the mapped faults on the south side of the Unzen graben and the north coast of the Uto Peninsula, then 24 km southeast across the eastern Uto Peninsula, where no fault is mapped, to the Hinagu end. The blocks' relative motion opens it at about 11 mm/yr, as it did the old connector. One site, 960696, moves to the Amur block. The base experiment has a new reference solve (block motion within 0.16 mm/yr of 0049's) and all 48 windows were rerun. Against 0049: window cross-validation \u221243, better in 31 of 48 windows (the loss is in the two short windows right after Tohoku); network fit unchanged (median ratio 0.9999) and Kyushu fit unchanged; residuals within 40 km of the new segments 7\u201315% lower in 1997\u20132003 and up to 0.17 mm/yr higher in some windows after 2016. Slow slip Mw is within 0.002 of 0049's and Kumamoto afterslip within 0.004 (Mw 6.78 at 1 yr, 6.85 at 2 yr).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 48,
+      "n_windows": 56,
+      "exported_at": "2026-11-08T00:27:52Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4/manifest.json",
+      "bytes_total": 8712229
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok",
+      "label": "0051 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 53 windows): 0050 with fault meshes for the 2007 Ch\u016betsu-oki, 2004 Ch\u016betsu and 1995 Kobe earthquakes and afterslip for Ch\u016betsu-oki and Kobe, uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0050 with three new fault meshes. The 2007 Ch\u016betsu-oki rupture is meshed on the Noto\u2013Niigata block boundary, on its northwest-dipping plane (45\u00b0 to 20 km): coupled, with free slip in its first year. The 2004 Ch\u016betsu rupture is meshed along the Muikamachi fault zone (50\u00b0 west-northwest to 20 km) for afterslip only: it lies inside a block, so it has no block-motion rate. The 1995 Kobe rupture is a vertical mesh on the block boundary from southern Awaji to Takatsuki, coupled in strike-slip; it can't carry the old segments' fault-normal shortening, which moves block motion in Kinki by about 0.7 mm/yr. Both Ch\u016betsu earthquakes now start windows of their own (+91 and +365 days), so the base experiment has 53 windows and its station velocities differ slightly from 0050's in every window: cross-validation scores can't be compared with 0050's. The record has Omori afterslip for Ch\u016betsu-oki (window cross-validation +85) and Kobe (+38). An afterslip state for Ch\u016betsu 2004 scored \u2212127 against free slip in each window of its first year, so it is left out and that mesh has free slip in its first year only. Ch\u016betsu-oki afterslip reaches Mw 6.24 at 1 yr (the earthquake was Mw 6.62); near-field residuals in the first 24 days drop from 57 to 20 mm/yr. Kobe shows right-lateral slip of Mw 6.16 over 1997\u20132000, mostly deep beneath Kobe and the Rokko mountains, decaying to 0.2 mm/yr by 2025; coupling on the Kobe faults stays at 0.67\u20130.69 throughout. The network fit matches 0050's, slow slip Mw is within 0.03 and Kumamoto afterslip within 0.003.",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 53,
+      "n_windows": 63,
+      "exported_at": "2026-11-09T00:28:06Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok/manifest.json",
+      "bytes_total": 9939421
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2",
+      "label": "0052 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 53 windows): 0051 with the public seafloor GNSS-A positions as data and Japan Trench afterslip after Tohoku allowed in either sense, uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0051 with the Japan Coast Guard's 27 SGO-A sites (2000\u20132024) and Tohoku University's G02\u2013G20 (2012\u20132024) fitted as data. Without them, 0051 fails beneath the Japan Trench forearc after Tohoku: from 2013 to 2021 the sites near the trench move landward faster than the plate converges. Here the Tohoku afterslip state on the Japan Trench takes either sign, so coupling can exceed 1 off Miyagi after Tohoku (1.44 on average in 2012\u20132021): a kinematic stand-in for the landward pull of relaxation near the trench, not locking. Seafloor residuals beneath the Japan Trench after Tohoku fall from 112 and 162 mm to 28 and 49 mm, Nankai from 31 to 28 mm, and the onshore fit matches 0051's. Held-out seafloor sites are predicted far better than by 0051; onshore window cross-validation is 415 lower. A BEL sheet at the base of the subducting plate fits the seafloor as well but costs more onshore, so it isn't used. Seafloor data: Japan Coast Guard (CC BY-NC 4.0) and Tohoku University (CC BY 4.0).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 53,
+      "n_windows": 63,
+      "exported_at": "2026-11-11T01:54:46Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2/manifest.json",
+      "bytes_total": 9962928
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap",
+      "label": "0053 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 53 windows): 0052 with the total coupling capped at 1 in every window, afterslip periods included, uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0052 with the total coupling (background plus every afterslip state and slow slip episode, measured along the plate motion) capped at 1 in every window, afterslip periods included, on the Nankai, Japan Trench and Sagami megathrusts. The cap binds off Miyagi at 0\u201315 km from 2014, over 8,000\u201311,000 km\u00b2, and coupling there at 0\u201320 km averages 0.86 in 2012\u20132021 (0052: 1.44). The dip-slip coupling shown can still reach about 1.06 where the strike-slip coupling is below 1. Seafloor residuals beneath the Japan Trench after Tohoku are 37 and 71 mm (0052: 28 and 49), and from 2013 to 2021 the sites near the trench still move about 34 mm/yr further landward than the model. Held-out seafloor sites are predicted little better than without the seafloor-driven trench state (+109, against +916 for 0052). Onshore window cross-validation is 235 lower than for 0052, all of it in the Boso slow slip windows, where the cap also limits the episodes' free strike-slip; elsewhere the two match. So the seafloor prefers coupling above 1 off Miyagi after Tohoku. Seafloor data: Japan Coast Guard (CC BY-NC 4.0) and Tohoku University (CC BY 4.0).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 53,
+      "n_windows": 63,
+      "exported_at": "2026-11-11T15:26:58Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap/manifest.json",
+      "bytes_total": 9962992
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap_relax",
+      "label": "0054 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 53 windows): 0053 with the Japan Trench megathrust as the base of the elastic forearc after Tohoku (slip deficit beyond coupling 1 in a state of its own, with its own decay), uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0053 plus a second Tohoku state on the Japan Trench megathrust. It can only add slip deficit, is left out of the cap at coupling 1, and decays on its own clock (one pattern, Omori with c = 1 yr). In the BEL framework of Loveless and Meade (2025), the megathrust is the base of the elastic upper plate beneath the offshore forearc. Slip deficit beyond the plate rate there is a displacement condition on that base: what relaxation below the forearc, or a slab moving faster than the plate, does to it. Coupling off Miyagi at 0\u201320 km is about \u22125 in the first month after Tohoku (afterslip), 2\u20133 through 2011, about 1.5 by 2014 and 1.1 by 2019; 0052's first-week value of 54 is gone. The coupling drawn is the total. Off Iwate and Ibaraki at 20\u201340 km the deficit state and the afterslip offset each other, and only their sum is constrained. Seafloor residuals beneath the Japan Trench after Tohoku are 28 and 48 mm, as in 0052. Held-out seafloor sites are predicted better than by 0052 (cross-validation +1,138 against the trench state without seafloor-driven deficit; 0052 +916, 0053 +109), and so are held-out onshore windows (+548; 0052 \u2212416, 0053 \u2212651). It is the best of the three BEL configurations tested (0054\u20130056). Seafloor data: Japan Coast Guard (CC BY-NC 4.0) and Tohoku University (CC BY 4.0).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 53,
+      "n_windows": 63,
+      "exported_at": "2026-11-12T04:43:53Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap_relax/manifest.json",
+      "bytes_total": 9963256
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_uncut30_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap",
+      "label": "0055 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 53 windows): 0053 with the 30 km BEL sheet uncut, reaching the Japan Trench beneath the forearc as one sheet, uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0053 on a base whose 30 km BEL sheet is no longer cut beneath the Japan Trench forearc. It reaches the trench as one mesh with one prior (3,895 triangles, 932 modes), so the BEL's afterslip states and its field in each window cover the forearc. Beneath the offshore forearc the flat sheet lies inside the subducting plate; beneath the coast it hangs over the slab. After Tohoku the BEL slips 80\u2013100 mm/yr beneath the forearc off Miyagi. The seafloor fit matches 0052's (28 and 48 mm), and the onshore fit after Tohoku is 0.7% better than 0053's. But the shallow megathrust off Miyagi then shows ongoing afterslip, with coupling 0.28 on average in 2012\u20132021, instead of relocking: the sheet trades with megathrust afterslip, as the uncut BEL did before it was cut. Held-out data are predicted worse: seafloor cross-validation is +1,037 and onshore window cross-validation \u22121,684, against +1,138 and +548 for 0054. The losses are spread over the windows after Tohoku. The same sheet at 20 km scores lower still (\u22123,428) and isn't shown. Seafloor data: Japan Coast Guard (CC BY-NC 4.0) and Tohoku University (CC BY 4.0).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 53,
+      "n_windows": 63,
+      "exported_at": "2026-11-12T04:43:56Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_uncut30_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap/manifest.json",
+      "bytes_total": 10317130
+    },
+    {
+      "id": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_coldnose70_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap_relax",
+      "label": "0056 \u00b7 Smoothed in time, 1997\u20132025 (one QP over 53 windows): 0054 with the BEL following the slab through the cold nose (the interface down to 70 km, then a curtain up to the 30 km sheet), uncorrelated noise, background coupling from \u22121 to 1, fourteen slow slip events as signal, fixed 747-site network, UNR positions (MAP)",
+      "description": "0054 on a base whose BEL follows the slab beneath the coast, as the cold nose of the mantle-wedge corner would make it (Sun et al., 2014; Freed et al., 2017; Luo and Wang, 2021). The sheet runs along the slab interface from the trench mesh's 50 km bottom edge down to 70 km (extrapolated with the dip of its deepest triangles), then up a vertical curtain beneath the 70 km line to the 30 km sheet landward of it. Offshore it is 0054. Beneath the coast, flow in the hot wedge acts on the curtain and on the interface at 50\u201370 km. That part of the BEL slips 226 mm in the first year after Tohoku and 401 mm in 2012\u20132021. Megathrust coupling at 20\u201350 km off Miyagi averages about \u22122.5 in 2012\u20132021 (0053: \u22120.9 to \u22121.4). Seafloor cross-validation is +1,044 and onshore window cross-validation +465, against +1,138 and +548 for 0054. It does better before Tohoku (+93 against +20) and worse in the first week after it, so there is no overall gain. Seafloor data: Japan Coast Guard (CC BY-NC 4.0) and Tohoku University (CC BY 4.0).",
+      "gnss_source": "unr",
+      "time": {
+        "start": "1997-04-01",
+        "end": "2025-05-09"
+      },
+      "n_frames": 53,
+      "n_windows": 63,
+      "exported_at": "2026-11-12T04:43:59Z",
+      "manifest": "starter_belcut50_m99_cmt25_nk20b_hyuga_trench_boso_core97_sse_bungo19_kumamoto_b97i300_steps_hsw_ck_unr_coldnose70_tsmooth_iid_ou02_m68_frame_blk_tbel_slow_b11_lsse_boso_kum_h25_tk50_ep4_cok_sfjt2cap_relax/manifest.json",
+      "bytes_total": 10066416
+    }
+  ],
+  "default": "starter_longwin_unr"
+}
